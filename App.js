@@ -26,6 +26,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { requestTrackingPermission } from 'react-native-tracking-transparency';
+
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -53,6 +55,12 @@ const Section = ({children, title}): Node => {
 };
 
 const App: () => Node = () => {
+
+  React.useEffect(() => {
+    console.log('fui usado');
+    requestTrackingPermission();
+  }, []);
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
